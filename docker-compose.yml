@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+  express-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.express
+    container_name: express-app
+    ports:
+      - "3001:3001"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
